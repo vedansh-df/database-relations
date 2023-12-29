@@ -1,25 +1,32 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { UserRepository } from './users.repository';
 import { Users } from './users.entity';
 import { Like } from 'typeorm';
 import { UsersDto } from './dto/users.dto';
+import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class UsersService {
-    constructor(private userRepository: UserRepository) { }
+    constructor(
+        private userRepository: UserRepository,
+    ) { }
 
-    async createUser(data: UsersDto): Promise<void> {
+    async signUp(data: UsersDto): Promise<void> {
         try {
-            const { name, email } = data
+            const { name, email, password } = data
+            const salt = await bcrypt.genSalt();
+            const hash = await bcrypt.hash(password, salt);
+
             const createUser = this.userRepository.create({
                 name,
-                email
+                email,
+                password: hash
             })
 
             await this.userRepository.save(createUser)
         } catch (error) {
             console.log(error)
-            throw new Error(error)
+            throw new UnauthorizedException("Already existing user")
         }
     }
 

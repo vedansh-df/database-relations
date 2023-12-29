@@ -1,5 +1,5 @@
-import { NewAcc } from "src/new-acc/new-acc.entity";
-import { Users } from "src/users/users.entity";
+import { NewAcc } from "../new-acc/new-acc.entity";
+import { Users } from "../users/users.entity";
 import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()

@@ -1,4 +1,4 @@
-import { Accessories } from "src/accessories/accessories.entity";
+import { Accessories } from "../accessories/accessories.entity";
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()

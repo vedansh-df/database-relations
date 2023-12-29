@@ -6,4 +6,7 @@ export class UsersDto {
 
     @IsNotEmpty()
     email: string
+
+    @IsNotEmpty()
+    password: string
 }

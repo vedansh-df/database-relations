@@ -6,6 +6,7 @@ import { AccessoriesModule } from './accessories/accessories.module';
 import { NewAccModule } from './new-acc/new-acc.module';
 import { ProductsModule } from './products/products.module';
 import { CategoryModule } from './category/category.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -13,6 +14,9 @@ import { CategoryModule } from './category/category.module';
     PhotosModule,
     AccessoriesModule,
     NewAccModule,
+    ProductsModule,
+    CategoryModule,
+    AuthModule,
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: 'localhost',
@@ -23,8 +27,6 @@ import { CategoryModule } from './category/category.module';
       autoLoadEntities: true,
       synchronize: true,
     }),
-    ProductsModule,
-    CategoryModule,
   ],
   controllers: [],
   providers: [],

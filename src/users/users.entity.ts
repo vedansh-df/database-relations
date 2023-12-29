@@ -1,5 +1,5 @@
-import { Accessories } from "src/accessories/accessories.entity";
-import { Photos } from "src/photos/photos.entity";
+import { Accessories } from "../accessories/accessories.entity";
+import { Photos } from "../photos/photos.entity";
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
@@ -10,8 +10,11 @@ export class Users {
     @Column()
     name: string
 
-    @Column()
+    @Column({ unique: true })
     email: string
+
+    @Column()
+    password: string
 
     @OneToMany(() => Photos, (photo) => photo.userId)
     photoId: Photos[]
@@ -19,5 +22,5 @@ export class Users {
     @OneToMany(() => Accessories, (accessories) => accessories.userId)
     accessoriesId: Accessories[]
 
-    
+
 }

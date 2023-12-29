@@ -4,8 +4,8 @@ import { UsersService } from './users.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Users } from './users.entity';
 import { UserRepository } from './users.repository';
-import { Photos } from 'src/photos/photos.entity';
-import { Accessories } from 'src/accessories/accessories.entity';
+import { Photos } from '../photos/photos.entity';
+import { Accessories } from '../accessories/accessories.entity';
 
 @Module({
   imports: [

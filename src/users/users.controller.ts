@@ -2,8 +2,9 @@ import { Body, Controller, Get, Post } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { Users } from './users.entity';
 import { UsersDto } from './dto/users.dto';
+import { Public } from '../auth/auth.decorator';
 
-@Controller('users')
+@Controller('user')
 export class UsersController {
     constructor(private userService: UsersService) { }
 
@@ -22,8 +23,9 @@ export class UsersController {
         return this.userService.leftJoin()
     }
 
-    @Post()
-    createUser(@Body() data: UsersDto): Promise<void> {
-        return this.userService.createUser(data)
+    @Public()
+    @Post('signUp')
+    signUp(@Body() data: UsersDto): Promise<void> {
+        return this.userService.signUp(data)
     }
 }
